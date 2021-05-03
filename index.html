@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Gamebox</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+	<div id="container">
+		<canvas id="gcanv"/>
+	</div>
+	
+	
+	<script>
+		var canvas = document.getElementById("gcanv");
+		var ctx = canvas.getContext("2d");
+		
+		class Img{
+			constructor(src){
+				this.image = new Image().src = src;
+				this.image.onload = new function(){
+					console.log("Image loaded");
+					ctx.drawImage(this.image, canvas.width/2-this.image.availWidth/4, canvas.height/2-this.image.availHeight/4, this.image.availWidth/2, this.image.availHeight/2);
+
+				};
+			}
+		}
+			
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		ctx.fillStyle = "#BBFFBD";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		var joinGameImg = new Img("joingame.png");
+
+	</script>
+</body>
+</html>
